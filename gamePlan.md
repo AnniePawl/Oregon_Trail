@@ -25,6 +25,6 @@
 ### CSS File
 
 ### JavaScript File
-- Contains **Game Object** that takes care of starting, pausing and resuming 
+- Contains **Game Object** that takes care of starting, pausing and resuming
 - Contains **Caravan Object** (OregonH.Caravan) w/ init method
 - Caravan object keeps caravan properties and takes care of things like weight and distance calculations and food consumption.
