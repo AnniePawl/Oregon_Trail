@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Oregon Trail Game</title>
     <!--Import CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="home"></div>
+    <!-- <div id="home"></div> -->
     <div id="journey">
       <div id="stats-area">
         <div class="stat">Day <span id="stat-day" class="stat-value"></span></div>
@@ -21,29 +21,33 @@
         <div class="stat">Firepower <span id="stat-firepower" class="stat-value"></span></div>
         <div class="stat">Weight <span id="stat-weight" class="stat-value"></span><span id="stat-capacity" class="stat-value"></span></div>
       </div>
+
+
+  <div class="updates-area" id="updates-area">
+      <!-- Game updates Box -->
   </div>
 
-  <div class="updates-area" id="updates-area"></div>
-      <div id="shop" class="hidden">
-        <div id="prods">
-        </div>
-        <button>Leave Shop</button>
-      </div>
-      <div id="attack" class="hidden">
-        <div id="attack-description"></div>
-        <button id="fight">Fight!</button>
-        <button id="runaway">Run Away...</button>
-      </div>
-      <div id="progress-area">
-        <img id="caravan" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA327aL0woOWrImm0--No6TTZoTS13XiXlyjgPVAiGGlQ4isDMBw" />
-        <img id="trees" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpRRXyzx4Jvp_WMXNY2ZmnLl7sP2fT5TlBvWDVE_1LBtgiBqFpig" />
-      </div>
+  <div id="shop" class="hidden">
+    <div id="prods">
     </div>
+    <button>Leave Shop</button>
+  </div>
 
+  <div id="attack" class="hidden">
+    <div id="attack-description"></div>
+    <button id="fight">Fight!</button>
+    <button id="runaway">Run Away...</button>
+  </div>
+
+  <div id="progress-area">
+    <img id="caravan" src="images/caravan.png" />
+  </div>
+
+</div>
 <!-- Import JavaScript Files  -->
-    <script src="event.js"></script>
-    <script src="caravan.js"></script>
-    <script src="UI.js"></script>
-    <script src="game.js"></script>
+    <script src="js/event.js"></script>
+    <script src="js/caravan.js"></script>
+    <script src="js/UI.js"></script>
+    <script src="js/game.js"></script>
 </body>
 </html>

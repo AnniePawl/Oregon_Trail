@@ -16,7 +16,7 @@ body {
 }
 
 #home {
-  background-color: red;
+background-color: white;
 }
 
 #journey {
@@ -29,21 +29,24 @@ body {
 }
 
 #progress-area {
+  background-image: url(../images/tree.png);
+  background-repeat: repeat-x;
   float: left;
   position: relative;
-  width: 400px;
+  width: 100%;
+  height:383px;
   margin: 10px;
 }
 
 #trees {
-  /* width: 100%;
-  image-rendering: pixelated; */
+  width: 50%;
+  image-rendering: pixelated;
 }
 
 #caravan {
-  /* position: absolute;
+  position: absolute;
   bottom: 30px;
-  left: 0; */
+  left: 0;
 }
 
 #stats-area {

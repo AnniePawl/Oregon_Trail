@@ -12,5 +12,10 @@ Oregon.UI.notify = function(message, type){
 
 //Refresh visual caravan stats
 Oregon.UI.refreshStats = function() {
-  console.log(this.caravan);
+    document.getElementById('updates-area').innerHTML = '<div class="update-' + type + '">Day '+ Math.ceil(this.caravan.day) + ': ' + message+'</div>' + document.getElementById('updates-area').innerHTML;
+  };
 }
+
+// Update Caravan Position
+document.getElementById('caravan').style.left = (380 * this.caravan.distance/Oregon.FINAL_DISTANCE + 'px';
+};
