@@ -9,6 +9,9 @@ Oregon.Event = {};
 // 'value': how much we are changing property by.
 // 'text': what we show user in message log
 
+
+
+
 Oregon.Event.eventTypes = [
   {
     type: 'STAT-CHANGE',
@@ -65,9 +68,27 @@ Oregon.Event.eventTypes = [
     stat: 'oxen',
     value: 1,
     text: 'Found wild oxen. New oxen: '
+},
+  // BATTLES!
+
+  {
+    type: 'ATTACK',
+    notification: 'negative',
+    text: 'Bandits are attacking you'
+  },
+  {
+    type: 'ATTACK',
+    notification: 'negative',
+    text: 'Bandits are attacking you'
+  },
+  {
+    type: 'ATTACK',
+    notification: 'negative',
+    text: 'Bandits are attacking you'
   }
 
 ];
+
 
 Oregon.Event.generateEvent = function(){
   //pick random one
@@ -77,13 +98,38 @@ Oregon.Event.generateEvent = function(){
   //events that consist in updating a stat
   if(eventData.type == 'STAT-CHANGE') {
     this.stateChangeEvent(eventData);
+  } else if (eventData.type == 'ATTACK') {
+    //pause game
+    this.game.pauseJourney();
+    //notify user
+    this.ui.notify(eventData.text, eventData.notification);
+    //prepare event
+    this.attackEvent(eventData);
   }
 };
 
+/*
+
+
+
 Oregon.Event.stateChangeEvent = function(eventData) {
   //can't have negative quantities
-  if(eventData.value + this.caravan[eventData.stat] &gt;= 0) {
+  if(eventData.value + this.caravan[eventData.stat] >= 0) {
     this.caravan[eventData.stat] += eventData.value;
     this.ui.notify(eventData.text + Math.abs(eventData.value), eventData.notification);
   }
 };
+
+
+
+
+//prepare an attack event
+Oregon.Event.attackEvent = function(eventData){
+  var firepower = Math.round((0.7 + 0.6 * Math.random()) * Oregon.ENEMY_FIREPOWER_AVG);
+  var gold = Math.round((0.7 + 0.6 * Math.random()) * Oregon.ENEMY_GOLD_AVG);
+
+  this.ui.showAttack(firepower, gold);
+};
+
+
+*/

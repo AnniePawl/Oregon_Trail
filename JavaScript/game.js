@@ -106,7 +106,7 @@ Oregon.Game.updateGame = function() {
     this.gameActive = false;
     return;
   }
-  // Trigger Random Events 
+  // Trigger Random Events
   if(Math.random() <= OregonH.EVENT_PROBABILITY) {
     this.eventManager.generateEvent();
   }
