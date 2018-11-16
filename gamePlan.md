@@ -9,6 +9,12 @@
     - firepower
 - Display on Screen
 
+Random Events
+Trigger random events in updateGame
+- Caravan stat change
+- Shop
+- Attacks
+
 ## JS Files
 ### Game.js
 - Contains necessary constants
@@ -19,4 +25,4 @@
 ### UI.js
 -Contains **UI Object** which takes are of showing things to user
 ### Event.js
-- Represents logic behind random event generation 
+- Represents logic behind random event generation
