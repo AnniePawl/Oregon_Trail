@@ -10,8 +10,6 @@ Oregon.Event = {};
 // 'text': what we show user in message log
 
 
-
-
 Oregon.Event.eventTypes = [
   {
     type: 'STAT-CHANGE',
@@ -89,7 +87,6 @@ Oregon.Event.eventTypes = [
 
 ];
 
-
 Oregon.Event.generateEvent = function(){
   //pick random one
   var eventIndex = Math.floor(Math.random() * this.eventTypes.length);
@@ -108,9 +105,6 @@ Oregon.Event.generateEvent = function(){
   }
 };
 
-/*
-
-
 
 Oregon.Event.stateChangeEvent = function(eventData) {
   //can't have negative quantities
@@ -121,8 +115,6 @@ Oregon.Event.stateChangeEvent = function(eventData) {
 };
 
 
-
-
 //prepare an attack event
 Oregon.Event.attackEvent = function(eventData){
   var firepower = Math.round((0.7 + 0.6 * Math.random()) * Oregon.ENEMY_FIREPOWER_AVG);
@@ -130,6 +122,3 @@ Oregon.Event.attackEvent = function(eventData){
 
   this.ui.showAttack(firepower, gold);
 };
-
-
-*/
