@@ -27,8 +27,6 @@ Oregon.UI.refreshStats = function() {
     document.getElementById('caravan').style.left = (380 * this.caravan.distance/Oregon.FINAL_DISTANCE) + 'px';
 };
 
-// Show Shop
-
 // Show Attack
 Oregon.UI.showAttack = function(firepower, gold) {
   var attackDiv = document.getElementById('attack');
@@ -41,10 +39,8 @@ Oregon.UI.showAttack = function(firepower, gold) {
 
   // Init Once
   if(!this.attackInitiated) {
-
     // Fight!
     document.getElementById('fight').addEventListener('click', this.fight.bind(this));
-
     // Run away!
     document.getElementById('runaway').addEventListener('click', this.runaway.bind(this));
 

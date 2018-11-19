@@ -67,7 +67,42 @@ Oregon.Event.eventTypes = [
     value: 1,
     text: 'Found wild oxen. New oxen: '
 },
-  // BATTLES!
+
+// SHOP!
+{
+  type: 'SHOP',
+  notification: 'neutral',
+  text: 'You have found a shop',
+  products: [
+    {item: 'food', qty: 20, price: 50},
+    {item: 'oxen', qty: 1, price: 200},
+    {item: 'firepower', qty: 2, price: 50},
+    {item: 'crew', qty: 5, price: 80}
+  ]
+},
+{
+  type: 'SHOP',
+  notification: 'neutral',
+  text: 'You have found a shop',
+  products: [
+    {item: 'food', qty: 30, price: 50},
+    {item: 'oxen', qty: 1, price: 200},
+    {item: 'firepower', qty: 2, price: 20},
+    {item: 'crew', qty: 10, price: 80}
+  ]
+},
+{
+  type: 'SHOP',
+  notification: 'neutral',
+  text: 'Smugglers sell various goods',
+  products: [
+    {item: 'food', qty: 20, price: 60},
+    {item: 'oxen', qty: 1, price: 300},
+    {item: 'firepower', qty: 2, price: 80},
+    {item: 'crew', qty: 5, price: 60}
+  ]
+},
+ // BATTLES!
 
   {
     type: 'ATTACK',
@@ -95,7 +130,18 @@ Oregon.Event.generateEvent = function(){
   //events that consist in updating a stat
   if(eventData.type == 'STAT-CHANGE') {
     this.stateChangeEvent(eventData);
-  } else if (eventData.type == 'ATTACK') {
+  }
+  //Shops
+  else if(eventData.type == 'SHOP') {
+    //Pause Game
+    this.game.pauseJourney();
+    //Notify User
+    this.ui.notify(eventData.text, eventData.notification);
+    //Prepare event
+    this.shopEvent(eventData);
+}
+    // Attacks
+    else if (eventData.type == 'ATTACK') {
     //pause game
     this.game.pauseJourney();
     //notify user
@@ -105,7 +151,6 @@ Oregon.Event.generateEvent = function(){
   }
 };
 
-
 Oregon.Event.stateChangeEvent = function(eventData) {
   //can't have negative quantities
   if(eventData.value + this.caravan[eventData.stat] >= 0) {
@@ -114,8 +159,30 @@ Oregon.Event.stateChangeEvent = function(eventData) {
   }
 };
 
+// Shop Event
+Oregon.Event.shopEvent = function(eventData) {
+  //# of products for sale
+  var numProds = Math.ceil(Math.random() * 4);
 
-//prepare an attack event
+  //product list
+  var products = [];
+  var j, priceFactor;
+
+  for(var i = 0; i < numProds; i++) {
+    //random product
+    j = Math.floor(Math.random() * eventData.products.length);
+    //multiply price by random factor +-30%
+    priceFactor = 0.7 + 0.6 * Math.random();
+    products.push({
+      item: eventData.products[j].item,
+      qty: eventData.products[j].qty,
+      price: Math.round(eventData.products[j].price * priceFactor)
+    });
+  }
+  this.ui.showShop(products);
+};
+
+//Prepare an attack event
 Oregon.Event.attackEvent = function(eventData){
   var firepower = Math.round((0.7 + 0.6 * Math.random()) * Oregon.ENEMY_FIREPOWER_AVG);
   var gold = Math.round((0.7 + 0.6 * Math.random()) * Oregon.ENEMY_GOLD_AVG);
