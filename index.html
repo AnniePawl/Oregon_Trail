@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,51 +11,57 @@
     <!--Import Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 </head>
+
 <body>
+
     <div class="header">
         <h1>WELCOME TO THE OREGON TRAIL</h1>
         <h2>SHIT IS ABOUT TO GET REAL</h2>
     </div>
-    <!-- <div id="home"></div> -->
+
+    <!--JOURNEY-->
     <div id="journey">
-      <div id="stats-area">
-        <div class="stat">Day: <span id="stat-day" class="stat-value"></span></div>
-        <div class="stat">Distance: <span id="stat-distance" class="stat-value"></span></div>
-        <div class="stat">Crew: <span id="stat-crew" class="stat-value"></span></div>
-        <div class="stat">Oxen: <span id="stat-oxen" class="stat-value"></span></div>
-        <div class="stat">Food: <span id="stat-food" class="stat-value"></span></div>
-        <div class="stat">Money: <span id="stat-money" class="stat-value"></span></div>
-        <div class="stat">Firepower: <span id="stat-firepower" class="stat-value"></span></div>
-        <div class="stat">Weight: <span id="stat-weight" class="stat-value"></span><span id="stat-capacity" class="stat-value"></span></div>
-      </div>
+        <div id="stats-area">
+            <div class="stat">Day: <span id="stat-day" class="stat-value"></span></div>
+            <div class="stat">Distance: <span id="stat-distance" class="stat-value"></span></div>
+            <div class="stat">Crew: <span id="stat-crew" class="stat-value"></span></div>
+            <div class="stat">Oxen: <span id="stat-oxen" class="stat-value"></span></div>
+            <div class="stat">Food: <span id="stat-food" class="stat-value"></span></div>
+            <div class="stat">Money: <span id="stat-money" class="stat-value"></span></div>
+            <div class="stat">Firepower: <span id="stat-firepower" class="stat-value"></span></div>
+            <div class="stat">Weight: <span id="stat-weight" class="stat-value"></span><span id="stat-capacity" class="stat-value"></span></div>
+        </div>
 
+        <!--Game Update Box  -->
+        <div class="updates-area" id="updates-area">
+        </div>
 
-  <div class="updates-area" id="updates-area">
-      <!-- Game updates Box -->
-  </div>
+        <!--Game Shop  -->
+        <div id="shop" class="hidden">
+            <div id="prods">
+            </div>
+            <button>Leave Shop</button>
+        </div>
 
-  <div id="shop" class="hidden">
-    <div id="prods">
+        <!-- Attack  -->
+        <div id="attack" class="hidden">
+            <div id="attack-description"></div>
+            <button id="fight">Fight!</button>
+            <button id="runaway">Run Away...</button>
+        </div>
+
+        <!--Progress Area-->
+        <div id="progress-area">
+            <img id="caravan" src="images/caravan.png" />
+        </div>
+
     </div>
-    <button>Leave Shop</button>
-  </div>
 
-  <div id="attack" class="hidden">
-    <div id="attack-description"></div>
-    <button id="fight">Fight!</button>
-    <button id="runaway">Run Away...</button>
-  </div>
-
-  <div id="progress-area">
-    <img id="caravan" src="images/caravan.png" />
-  </div>
-
-</div>
-
-<!-- Import JavaScript Files  -->
+    <!-- Import JavaScript Files  -->
     <script src="JavaScript/event.js"></script>
     <script src="JavaScript/caravan.js"></script>
     <script src="JavaScript/UI.js"></script>
     <script src="JavaScript/game.js"></script>
 </body>
+
 </html>

@@ -27,7 +27,77 @@ Oregon.UI.refreshStats = function() {
     document.getElementById('caravan').style.left = (380 * this.caravan.distance/Oregon.FINAL_DISTANCE) + 'px';
 };
 
-// Show Attack
+// SHOW SHOP
+Oregon.UI.showShop = function(products){
+  //Get Shop Area
+  var shopDiv = document.getElementById('shop');
+  shopDiv.classList.remove('hidden');
+  //Init Shop (once)
+  if(!this.shopInitiated) {
+    //Event Delegatino
+    shopDiv.addEventListener('click', function(e){
+      //what was clicked
+      var target = e.target || e.src;
+
+      //exit button
+      if(target.tagName == 'BUTTON') {
+        //resume journey
+        shopDiv.classList.add('hidden');
+        Oregon.UI.game.resumeJourney();
+      }
+      else if(target.tagName == 'DIV' && target.className.match(/product/)) {
+
+        Oregon.UI.buyProduct({
+          item: target.getAttribute('data-item'),
+          qty: target.getAttribute('data-qty'),
+          price: target.getAttribute('data-price')
+        });
+
+      }
+    });
+    this.shopInitiated = true;
+  }
+
+  //Clear Existing Content
+  var prodsDiv = document.getElementById('prods');
+  prodsDiv.innerHTML = '';
+
+  //Show Products
+  var product;
+  for(var i=0; i < products.length; i++) {
+    product = products[i];
+    prodsDiv.innerHTML += '<div class="product" data-qty="' + product.qty + '" data-item="' + product.item + '" data-price="' + product.price + '">' + product.qty + ' ' + product.item + ' - $' + product.price + '</div>';
+  }
+};
+
+//buy product
+Oregon.UI.buyProduct = function(product) {
+  //check we can afford it
+  if(product.price > Oregon.UI.caravan.money) {
+    Oregon.UI.notify('Not enough money', 'negative');
+    return false;
+  }
+
+  Oregon.UI.caravan.money -= product.price;
+
+  Oregon.UI.caravan[product.item] += +product.qty;
+
+  Oregon.UI.notify('Bought ' + product.qty + ' x ' + product.item, 'positive');
+
+  //update weight
+  Oregon.UI.caravan.updateWeight();
+
+  //update visuals
+  Oregon.UI.refreshStats();
+};
+
+
+
+
+
+
+
+// SHOW ATTACK
 Oregon.UI.showAttack = function(firepower, gold) {
   var attackDiv = document.getElementById('attack');
   attackDiv.classList.remove('hidden');
